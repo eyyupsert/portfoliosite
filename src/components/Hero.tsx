@@ -15,7 +15,6 @@ interface FloatingElement {
 
 export const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [textIndex, setTextIndex] = useState(0);
   const [floatingElements, setFloatingElements] = useState<FloatingElement[]>([]);
 
   // Animasyon varyasyonları
