@@ -13,12 +13,21 @@ interface Project {
   link: string;
 }
 
+interface FloatingElement {
+  id: number;
+  size: number;
+  left: string;
+  top: string;
+  delay: number;
+  duration: number;
+}
+
 export const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [floatingElements, setFloatingElements] = useState<any[]>([]);
+  const [floatingElements, setFloatingElements] = useState<FloatingElement[]>([]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
@@ -95,22 +104,6 @@ export const Projects = () => {
       link: "https://github.com/eyyupsert",
     },
   ];
-
-  const fadeInAnimationVariants = {
-    initial: {
-      opacity: 0,
-      y: 100,
-    },
-    animate: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.05 * index,
-        duration: 0.5,
-        ease: "easeInOut",
-      },
-    }),
-  };
 
   const projectCardVariants = {
     initial: { 

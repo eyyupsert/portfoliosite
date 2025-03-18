@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import Image from "next/image";
 
 export const Skills = () => {
   const ref = useRef(null);
@@ -126,7 +127,7 @@ export const Skills = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
+          {skillCategories.map((category, idx) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
@@ -232,9 +233,11 @@ export const Skills = () => {
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
                       <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl shadow-md flex items-center justify-center">
-                        <img 
+                        <Image 
                           src={tech.logo} 
                           alt={`${tech.name} logo`}
+                          width={64}
+                          height={64}
                           className="w-full h-full object-contain p-1"
                         />
                       </div>

@@ -3,6 +3,15 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
+interface FloatingElement {
+  id: number;
+  size: number;
+  x: number;
+  y: number;
+  delay: number;
+  duration: number;
+}
+
 export const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -15,7 +24,7 @@ export const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState("");
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [floatingElements, setFloatingElements] = useState<any[]>([]);
+  const [floatingElements, setFloatingElements] = useState<FloatingElement[]>([]);
 
   useEffect(() => {
     // Rasgele floating elementleri client tarafında oluştur

@@ -4,10 +4,19 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+interface FloatingElement {
+  id: number;
+  size: number;
+  left: string;
+  top: string;
+  delay: number;
+  duration: number;
+}
+
 export const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const [floatingElements, setFloatingElements] = useState<any[]>([]);
+  const [textIndex, setTextIndex] = useState(0);
+  const [floatingElements, setFloatingElements] = useState<FloatingElement[]>([]);
 
   // Animasyon varyasyonları
   const container = {
@@ -39,11 +48,6 @@ export const Hero = () => {
     
     setFloatingElements(elements);
 
-    // Animasyon tamamlandı sayılması için zamanlayıcı
-    const timer = setTimeout(() => {
-      setAnimationComplete(true);
-    }, 2000);
-
     // Mouse hareketi için event listener
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -52,7 +56,6 @@ export const Hero = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
