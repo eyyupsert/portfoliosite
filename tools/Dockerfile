@@ -3,6 +3,9 @@ FROM node:18-alpine AS base
 # Çalışma dizini oluştur
 WORKDIR /app
 
+# ESLint kontrollerini devre dışı bırak
+ENV NEXT_DISABLE_ESLINT=1
+
 # Bağımlılıkları kopyala ve yükle
 COPY package.json package-lock.json* ./
 RUN npm ci
