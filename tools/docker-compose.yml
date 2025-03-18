@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  portfolio:
+    build:
+      context: ..
+      dockerfile: tools/Dockerfile
+    container_name: portfolio-site
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ../public:/app/public
+    networks:
+      - portfolio-network
+
+  # İsteğe bağlı: Nginx proxy ekleyebilirsiniz
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: portfolio-nginx
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf
+  #     - ./ssl:/etc/nginx/ssl
+  #   depends_on:
+  #     - portfolio
+  #   networks:
+  #     - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge 
