@@ -105,17 +105,34 @@ export const About = () => {
           preserveAspectRatio="none"
         >
           <defs>
-            <pattern
-              id="grid"
-              width="10"
-              height="10"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="1" cy="1" r="0.5" />
+            <linearGradient id="premium-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.8"/>
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0.2"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="1" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+            <radialGradient id="spotlight" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+            </radialGradient>
+            <pattern id="premium-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M20 0 L40 20 L20 40 L0 20 Z" fill="none" stroke="url(#premium-gradient)" strokeWidth="0.5" />
+              <path d="M0 0 L20 20 L0 40 M40 0 L20 20 L40 40" fill="none" stroke="url(#premium-gradient)" strokeWidth="0.3" />
+              <circle cx="20" cy="20" r="1" fill="currentColor" filter="url(#glow)" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
+          <rect width="100%" height="100%" fill="url(#premium-pattern)" />
+          <circle cx="30" cy="30" r="35" fill="url(#spotlight)" opacity="0.3" />
+          <circle cx="70" cy="70" r="25" fill="url(#spotlight)" opacity="0.2" />
         </svg>
+      </div>
+
+      {/* Daha fazla parlayan elementler */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-radial from-primary/5 to-transparent rounded-full"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-gradient-radial from-accent/5 to-transparent rounded-full"></div>
       </div>
 
       {/* Parlayan elementler */}
@@ -151,23 +168,35 @@ export const About = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
         >
-          <span className="text-primary font-semibold uppercase tracking-wider text-sm relative inline-block">
-            <span className="relative z-10">Hakkımda</span>
-            <motion.span 
-              className="absolute -inset-1 bg-primary/10 rounded-lg -z-10"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900 dark:text-white relative inline-block">
-            <span className="relative z-10">Profesyonel Gelişim Yolculuğum</span>
-            <motion.span 
-              className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full -z-10"
+          {/* Başlık arka planı efekti */}
+          <motion.div 
+            className="absolute -inset-x-6 -inset-y-4 bg-gradient-to-r from-gray-100/80 to-white/80 dark:from-gray-800/80 dark:to-gray-900/80 rounded-2xl -z-10 backdrop-blur-sm border border-white/20 dark:border-gray-700/20 shadow-xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          />
+          
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900 dark:text-white relative inline-block px-6 py-2">
+            <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300">Profesyonel Gelişim Yolculuğum</span>
+            <motion.div 
+              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full -z-10"
               initial={{ width: "0%" }}
               animate={isInView ? { width: "100%" } : { width: "0%" }}
               transition={{ duration: 1, delay: 0.4 }}
+            />
+            <motion.div 
+              className="absolute -bottom-5 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-primary/40 to-accent/40 rounded-full -z-10"
+              initial={{ width: "0%" }}
+              animate={isInView ? { width: "80%" } : { width: "0%" }}
+              transition={{ duration: 1.2, delay: 0.6 }}
+            />
+            <motion.div 
+              className="absolute inset-0 bg-white/5 dark:bg-black/5 rounded-lg filter blur-sm -z-20"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
             />
           </h2>
         </motion.div>

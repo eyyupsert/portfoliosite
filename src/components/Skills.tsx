@@ -114,9 +114,6 @@ export const Skills = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold uppercase tracking-wider text-sm bg-primary/10 dark:bg-primary/20 px-4 py-1.5 rounded-full inline-block mb-2 shadow-sm backdrop-blur-sm">
-            Yeteneklerim
-          </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900 dark:text-white relative inline-block">
             <span className="relative z-10">Teknik Uzmanlık Alanlarım</span>
             <motion.div
