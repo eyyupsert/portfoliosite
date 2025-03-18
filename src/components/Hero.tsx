@@ -121,17 +121,19 @@ export const Hero = () => {
             variants={item}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight drop-shadow-glow"
           >
-            Merhaba, ben{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-gradient-xy">
-              Eyyüp SERT
-            </span>
+            Merhaba, ben Eyyüp
           </motion.h1>
           <motion.p
             variants={item}
             className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl"
           >
-            Modern ve performans odaklı uygulamalar geliştiriyorum. Java, C#, MySQL, MongoDB, RabbitMQ ve Docker
-            teknolojilerinde uzmanım.
+            4+ yıllık kıdemli yazılım mühendisliği deneyimimle modern, performans odaklı ve ölçeklenebilir uygulamalar geliştiriyorum. C# (.NET Core), Java (Spring Boot), PHP ve JavaScript teknolojilerinde uzmanlıkla birlikte, mikroservis mimarileri, API entegrasyonları ve veritabanı yönetimi (MySQL, MongoDB) konularında derin teknik bilgiye sahibim.
+          </motion.p>
+          <motion.p
+            variants={item}
+            className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-xl"
+          >
+            Çözüm odaklı yaklaşımımı, sistem optimizasyonu, güvenlik ve modern araçlar (RabbitMQ, Docker) ile birleştirerek sürdürülebilir yazılımlar tasarlıyorum. Ekip çalışmasına uyumlu, iletişim becerileri güçlü ve proaktif bir mühendis olarak, yeni teknolojilere adaptasyon konusunda sürekli öğrenmeye açık bir anlayışla ilerliyorum.
           </motion.p>
           <motion.div variants={item} className="flex flex-wrap gap-4">
             <motion.a
@@ -253,7 +255,7 @@ export const Hero = () => {
             
             {/* Parıltılı kenar efekti */}
             <motion.div
-              className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-primary to-accent opacity-70 blur-sm z-0"
+              className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-primary to-accent opacity-70 z-0"
               animate={{
                 background: [
                   "linear-gradient(0deg, rgba(0,112,243,0.5) 0%, rgba(109,40,217,0.5) 100%)",
